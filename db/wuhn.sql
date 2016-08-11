@@ -140,7 +140,20 @@ CREATE TABLE `role` (
   `orderno` int(3) DEFAULT NULL,
   PRIMARY KEY (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+-- ----------------------------
+-- Table structure for 'task'
+-- ----------------------------
+DROP TABLE IF EXISTS `task`;
+CREATE TABLE `task`(
+`taskid` varchar(100) NOT NULL ,
+`taskTitle` varchar(100) DEFAULT NULL  ,
+`taskInfo` varchar(100) DEFAULT NULL,
+`taskStauts` varchar(100) DEFAULT NULL ,
+`userid` varchar(100) DEFAULT NULL ,
+`creatTime` timestamp  DEFAULT  CURRENT_TIMESTAMP ,
+`completeTime` timestamp NULL,
+PRIMARY KEY (`taskid`)
+)ENGINE=InnoDB DEFAULT  CHARSET=utf8;
 -- ----------------------------
 -- Records of role
 -- ----------------------------
@@ -187,3 +200,5 @@ INSERT INTO `user` VALUES ('b6fc0161-422a-4c62-ae92-f3a5d132d1f2', '22', '1321@q
 INSERT INTO `user` VALUES ('c4ca45bd-6b37-4690-85c2-b62cf30fe0c3', '111', '1111@qq.com', '123456', 'wuhaining', '1', null, null, 'SYS_USER');
 INSERT INTO `user` VALUES ('c7a4e931-26bf-4d90-828e-fe8d993a4e46', 'xiaoming', '12345@qq.com', '123456', '', null, null, null, 'SYS_USER');
 INSERT INTO `user` VALUES ('f188cfbd-9d44-4003-ba0c-262d53f3e6aa', '1111', '1234569@qq.com', '123456', '', null, null, null, 'SYS_ADMIN');
+
+INSERT INTO `task` VALUES ('task1','title','info','test','c7a4e931-26bf-4d90-828e-fe8d993a4e46','2016-08-10','2016-12-31');

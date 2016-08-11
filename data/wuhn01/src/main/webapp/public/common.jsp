@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>wuhn</title>
     <!-- 公共方法 -->
 	<!--title图标-->
-	<link rel='icon' href="resources/images/common/title.ico" type="image/x-ico" /> 
+	<link rel='icon' href="resources/images/common/favicon.ico" type="image/x-ico" /> 
     <!-- Bootstrap样式  cdn -->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	

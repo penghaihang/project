@@ -203,6 +203,15 @@ function btnAjax(formId,submitId){
 				     //console.log(msg);
 				     var obj = jQuery.parseJSON(msg);
 				     if(obj.result==1){
+				     //表单提交成功,判断是否为新增还是修改
+				       if(formId=='userAddId'){
+				         //先关闭新增模态窗口
+				         $('#addModal').modal('hide');
+				       }
+				       else{
+				         $('#editModal').modal('hide');
+				       }
+				      //提示修改成功
 				    	 $('#successModal').modal('show');
 				     }else{
 				    	 $('#failureModal').modal('show');

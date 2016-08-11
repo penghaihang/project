@@ -6,8 +6,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>代办任务</title>
-	<!-- bootstrap-table样式 -->
+	<!-- bootstrap-table样式-->
 	<link rel="stylesheet" href="<%=basePath%>resources/plugin/bootstrap-table/bootstrap-table.css">
+	<!-- 页面布局样式 -->
 </head>
 <body>
 	

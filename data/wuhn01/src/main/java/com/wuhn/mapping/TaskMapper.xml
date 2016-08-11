@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuhn.dao.TaskMapper" >
+  <resultMap id="BaseResultMap" type="com.wuhn.module.Task" >
+    <id column="taskid" property="taskid" jdbcType="VARCHAR" />
+    <result column="taskTitle" property="taskTitle" jdbcType="VARCHAR" />
+    <result column="taskInfo" property="taskInfo" jdbcType="VARCHAR" />
+    <result column="taskStauts" property="taskStauts" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="creatTime" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="completeTime" property="completeTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    taskid, taskTitle, taskInfo, taskStauts, userid, creatTime, completeTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from task
+    where taskid = #{taskid,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据userid获取所有任务
+  <select id="getAllTaskUser" resultMap="BaseResultMap" parameterType="java.lang.String">
+   select
+   <include refid="Base_Column_List"></include>
+   from task
+   where userid = #{userid,jdbcType=VARCHAR}
+  </select> -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where taskid = #{taskid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wuhn.module.Task" >
+    insert into user ( taskid, taskTitle, taskInfo, 
+    taskStauts, userid, creatTime, completeTime
+      )
+    values (#{taskid,jdbcType=VARCHAR}, #{taskTitle,jdbcType=VARCHAR}, #{taskInfo,jdbcType=VARCHAR}, 
+      #{taskStauts,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{completeTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wuhn.module.Task" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskid != null" >
+        taskid,
+      </if>
+      <if test="taskTitle != null" >
+        taskTitle,
+      </if>
+      <if test="taskInfo != null" >
+        taskInfo,
+      </if>
+      <if test="taskStauts != null" >
+        taskStauts,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="creatTime != null" >
+        creatTime,
+      </if>
+      <if test="completeTime != null" >
+        completeTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskid != null" >
+        #{taskid,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null" >
+        #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="taskInfo != null" >
+        #{taskInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStauts != null" >
+        #{taskStauts,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null" >
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wuhn.module.Task" >
+    update task
+    <set >
+      <if test="taskTitle != null" >
+        taskTitle = #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="taskInfo != null" >
+        taskInfo = #{taskInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStauts != null" >
+        taskStauts = #{taskStauts,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        creatTime = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null" >
+        completeTime = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where taskid = #{taskid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wuhn.module.Task" >
+    update task
+    set taskTitle = #{taskTitle,jdbcType=VARCHAR},
+      taskInfo = #{taskInfo,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=VARCHAR},
+      taskStauts = #{taskStauts,jdbcType=VARCHAR},
+      creatTime = #{creatTime,jdbcType=TIMESTAMP},
+      completeTime = #{completeTime,jdbcType=TIMESTAMP},
+    where taskid = #{taskid,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 查询所有用户 -->
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from task 
+  	
+  </select>
+  
+  <!-- 查询该任务的所有信息，包括任务处理人 -->
+  <resultMap type="com.wuhn.module.Task" id="BaseResultMap2">
+    <id column="taskid" property="taskid" jdbcType="VARCHAR" />
+    <result column="taskTitle" property="taskTitle" jdbcType="VARCHAR" />
+    <result column="taskInfo" property="taskInfo" jdbcType="VARCHAR" />
+    <result column="taskStauts" property="taskStauts" jdbcType="VARCHAR" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="creatTime" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="completeTime" property="completeTime" jdbcType="TIMESTAMP" />
+	  <!-- user --> 
+      <association property="user" javaType="com.wuhn.module.User">
+         <id column="userid" property="userid" jdbcType="VARCHAR" />
+          <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+          <result column="email" property="email" jdbcType="VARCHAR" />
+          <result column="password" property="password" jdbcType="VARCHAR" />
+          <result column="name" property="name" jdbcType="VARCHAR" />
+          <result column="gender" property="gender" jdbcType="INTEGER" />
+          <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+          <result column="picture" property="picture" jdbcType="LONGVARBINARY" />
+          <result column="role" property="role" jdbcType="VARCHAR" />
+      </association> 
+      
+      <!-- ofType指定roles集合中的对象类型 
+      <collection property="roles" ofType="com.wuhn.module.Role">
+        <id column="roleid" jdbcType="VARCHAR" property="roleid" />
+	    <result column="rolePermission" jdbcType="VARCHAR" property="rolepermission" />
+	    <result column="identify" jdbcType="VARCHAR" property="identify" />
+	    <result column="description" jdbcType="VARCHAR" property="description" />
+	    <result column="orderno" jdbcType="INTEGER" property="orderno" />
+      </collection>  
+      -->  
+  </resultMap>
+  <!-- List<Task> getAllTaskUser(String userid); -->
+  <!-- 根据userid获取所有的Task -->
+ <select id="getAllTaskUser" resultMap="BaseResultMap2" parameterType="java.lang.String">
+ select * from task t , user u
+ where t.userid = #{userid,jdbcType=VARCHAR} 
+ and t.userid = u.userid
+ </select>
+  <!-- 根据主键查找用户 -->
+  <select id="selectAllUserRoleByPrimaryKey" resultMap="BaseResultMap2"  parameterType="java.lang.String">
+  	select * from user u,  role r
+	where u.role = r.identify 
+		  and u.userid = #{userid,jdbcType=VARCHAR} 
+  	<!--
+  	select * from user u,  role r, picture p
+	where u.role = r.identify 
+	and u.picture = p.picture
+		  and u.userid = #{userid,jdbcType=VARCHAR} 	
+	 -->
+	<!--  
+	select * from user u
+	left join role r on u.role = r.identify
+	left join picture p on u.picture = p.picture
+	and u.userid = #{userid,jdbcType=VARCHAR} 
+	-->
+  </select>
+  
+  <!-- 根据email查找用户 -->
+  <select id="selectUserRoleByName" resultMap="BaseResultMap2"  parameterType="java.lang.String">
+  	select * from user u,  role r
+	where u.role = r.identify and u.email = #{email,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 查询用户总数 -->
+  <select id="selectTaskCount" resultType="int">
+  	select count(*) from task
+  </select>
+  
+  <!-- 分页、条件查询 -->
+  <select id="selectTaskbyPages" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from user
+  	<trim prefix="WHERE" prefixOverrides="AND |OR ">  
+      <if test="taskTitle != null">  
+         taskTitle = #{taskTitle,jdbcType=VARCHAR}  
+      </if>  
+    </trim>   
+    <if test="limit != null and offset != null">
+    	 limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+    </if>  
+    
+  </select>
+  
+  <!-- 批量删除 -->
+  <delete id="batchDeleteByPrimaryKey" parameterType="java.util.List">
+		delete from task where taskid in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")"> 
+			#{item} 
+		</foreach>
+  </delete>
+  
+  <!-- 根据某一个属性查询 -->
+  <select id="selectByTask" resultMap="BaseResultMap" parameterType="com.wuhn.module.User">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from task
+  	<where>  
+  		<if test="taskid != null">AND taskid = #{userid,jdbcType=VARCHAR}</if>
+  		<if test="taskTitle != null">AND taskTitle = #{taskTitle,jdbcType=VARCHAR}</if>
+  		<if test="taskInfo != null">AND taskInfo = #{taskInfo,jdbcType=VARCHAR}</if>
+  		<if test="taskStauts != null">AND taskStauts = #{taskStauts,jdbcType=VARCHAR}</if>
+  		<if test="userid != null">AND userid = #{userid,jdbcType=VARCHAR}</if>
+  		<if test="creatTime != null">AND creatTime = #{creatTime,jdbcType=TIMESTAMP}</if>
+  		<if test="completeTime != null">AND completeTime = #{completeTime,jdbcType=TIMESTAMP}</if>
+  	</where>
+  </select>
+    
+</mapper>

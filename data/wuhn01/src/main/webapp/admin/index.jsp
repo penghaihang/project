@@ -35,16 +35,105 @@
                         <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                 <i class="icon-bell"></i>
-                                <span class="badge badge-default"> 0 </span>
+                                <span class="badge badge-default"> 7 </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="external">
                                     <h3>
-                                        <span class="bold">0 条</span> 通知</h3>
+                                        <span class="bold">7 条</span> 通知</h3>
                                 </li>
                                 <li>
                                     <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-                                        
+                                        <li>
+										<a href="javascript:;">
+										<span class="time">just now</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-success">
+										<i class="fa fa-plus"></i>
+										</span>
+										New user registered. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">3 mins</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-danger">
+										<i class="fa fa-bolt"></i>
+										</span>
+										Server #12 overloaded. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">10 mins</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-warning">
+										<i class="fa fa-bell-o"></i>
+										</span>
+										Server #2 not responding. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">14 hrs</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-info">
+										<i class="fa fa-bullhorn"></i>
+										</span>
+										Application error. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">2 days</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-danger">
+										<i class="fa fa-bolt"></i>
+										</span>
+										Database overloaded 68%. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">3 days</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-danger">
+										<i class="fa fa-bolt"></i>
+										</span>
+										A user IP blocked. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">4 days</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-warning">
+										<i class="fa fa-bell-o"></i>
+										</span>
+										Storage Server #4 not responding dfdfdfd. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">5 days</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-info">
+										<i class="fa fa-bullhorn"></i>
+										</span>
+										System Error. </span>
+										</a>
+									</li>
+									<li>
+										<a href="javascript:;">
+										<span class="time">9 days</span>
+										<span class="details">
+										<span class="label label-sm label-icon label-danger">
+										<i class="fa fa-bolt"></i>
+										</span>
+										Storage server failed. </span>
+										</a>
+									</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -82,6 +171,8 @@
                                 <li class="external">
                                     <h3>你有
                                         <span class="bold">0 条</span> 任务</h3>
+                                        <!-- 跳转至任务页面 -->
+                                        <a id="viewall" linktype="<%=basePath%>admin/common/todo/taskshow.jsp">查看所有</a>
                                 </li>
                                 <li>
                                     <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
@@ -229,7 +320,7 @@
             <div class="page-content">
                 <!-- BEGIN PAGE HEADER-->
                
-                <h3 class="page-title">待办任务
+                  <h3 class="page-title">待办任务
                     <small>待办任务</small>
                 </h3>
 	
@@ -245,9 +336,30 @@
                             <span>代办任务</span>
                         </li>
                     </ul>
-                    
+                    	<div class="page-toolbar">
+						<div class="btn-group pull-right">
+							<button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+							选项<i class="fa fa-angle-down"></i>
+							</button>
+							<ul class="dropdown-menu pull-right" role="menu">
+								<li>
+									<a href="#"><i class="fa fa-calendar"></i> 日历</a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-weixin"></i> 微信</a>
+								</li>
+								<li>
+									<a href="#"><i class="icon-settings"></i> 其他事情</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									<a href="#"><i class="icon-reload"></i> 分割线</a>
+								</li>
+							</ul>
+						</div>
+					</div>
                 </div>
-	
                 <!-- END PAGE HEADER-->
                 <div>
 					<iframe id="iframe_link" style="" frameborder="0" scrolling="yes" width="100%" height="700px" src="<%=basePath%>admin/common/todo/task.jsp"></iframe>

@@ -36,7 +36,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="<%=basePath%>resources/plugin/metronic/assets/layouts/layout2/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color" />
     <link href="<%=basePath%>resources/plugin/metronic/assets/layouts/layout2/css/custom.min.css" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
-	<link rel="shortcut icon" href="<%=basePath%>resources/images/common/title.ico"/>
+    <!-- 图标 -->
+	<link rel="shortcut icon" href="<%=basePath%>resources/images/common/favicon.ico"/>
 	<!-- 遮罩层 -->
     <link rel="stylesheet" href="<%=basePath%>resources/css/common/mask.css">
 	
