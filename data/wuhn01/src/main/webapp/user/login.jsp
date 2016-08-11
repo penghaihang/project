@@ -25,7 +25,7 @@
   			<div class="form-group">
 			    	<div class="input-group">
 				      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>  					
-				      <input value="123456@qq.com" type="text" name="username" class="form-control JV_Required" id="inputName" placeholder="请输入账号[邮箱]" aria-describedby="basic-addon1">		      
+				      <input value="12345@qq.com" type="text" name="username" class="form-control JV_Required" id="inputName" placeholder="请输入账号[邮箱]" aria-describedby="basic-addon1">		      
 			    	</div>
 			</div>
 		  <div class="form-group">
